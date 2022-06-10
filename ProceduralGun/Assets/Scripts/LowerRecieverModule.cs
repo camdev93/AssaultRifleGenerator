@@ -5,7 +5,8 @@ using UnityEngine;
 public class LowerRecieverModule : MonoBehaviour
 {
     public Transform triggerModuleConnection;
-   public void GenerateNewLowerReciever()
+
+    public void GenerateNewLowerReciever()
    {
         for (int i = 0; i < transform.childCount; i++)
         {

@@ -11,6 +11,7 @@ public class ButtstockModule : MonoBehaviour
         float cheekRestY = Random.Range(-0.05f, 0.08f);
         float buttPart1Y = Random.Range(-0.05f, 0.06f);
         float buttPart2Y = Random.Range(-0.05f, 0.06f);
+        float _butt = Random.Range(0.01f, 0.15f);
         float rigPartX = Random.Range(0, 25f);
         float sizeY = Random.Range(0.4f, 1f);
         float sizeZ = Random.Range(0.4f, 1f);
@@ -24,5 +25,6 @@ public class ButtstockModule : MonoBehaviour
 
         cheekRest.localScale = new Vector3(cheekRest.localScale.x, sizeY, sizeZ);
         buttPart1.localScale = new Vector3(buttPart1.localScale.x, sizeY, sizeZ);
+        butt.localScale = new Vector3(_butt, _butt, _butt);
     }
 }

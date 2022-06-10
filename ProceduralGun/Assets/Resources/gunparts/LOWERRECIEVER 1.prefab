@@ -711,3 +711,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerModuleConnection: {fileID: 7603863326241110174}
+  bolt: {fileID: 6059463272225845586, guid: ba04a27c8f87e9e4193e0ab649c3568e, type: 3}
+  numberOfBolts: 3

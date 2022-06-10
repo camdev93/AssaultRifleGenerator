@@ -362,3 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695269b313f93f14086471585c73aa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bolt: {fileID: 6059463272225845586, guid: ba04a27c8f87e9e4193e0ab649c3568e, type: 3}
+  numberOfBolts: 10

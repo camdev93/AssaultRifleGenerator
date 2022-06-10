@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AssaultRifleGenerator : MonoBehaviour
 {
+    public static GameObject gunPart;
+
     public List<GameObject> upperRecieverParts;
     public List<GameObject> lowerRecieverParts;
     public List<GameObject> barrelParts;
@@ -41,8 +43,6 @@ public class AssaultRifleGenerator : MonoBehaviour
 
         UpperRecieverModule urm = GetComponentInChildren<UpperRecieverModule>();
         urm.GenerateNewUpperReciever();
-        //urm.GetComponentInChildren<PerlinNoise>().scale = scale;
-        //urm.GetComponentInChildren<PerlinNoise>().MainBody();
         
         int swapValue = Random.Range(0, 2);
 
@@ -78,6 +78,8 @@ public class AssaultRifleGenerator : MonoBehaviour
         ScopeModule sm = GetComponentInChildren<ScopeModule>();
         sm.GenerateNewScopeModule();
     }
+
+    
 
     void GenerateRifleComponents(List<GameObject> parts, Transform socket)
     {

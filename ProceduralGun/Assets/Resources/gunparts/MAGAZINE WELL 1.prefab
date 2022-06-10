@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8b4854e3ebdf04b98958c2735f9593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bolt: {fileID: 6059463272225845586, guid: ba04a27c8f87e9e4193e0ab649c3568e, type: 3}
+  numberOfBolts: 7
 --- !u!1 &7651392298404172890
 GameObject:
   m_ObjectHideFlags: 0
