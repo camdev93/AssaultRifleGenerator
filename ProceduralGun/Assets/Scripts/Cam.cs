@@ -61,7 +61,7 @@ public class Cam : MonoBehaviour
     {
         while (true)
         {
-            angleIndex = 7;//Random.Range(0, 8);
+            angleIndex = Random.Range(0, 8);
             yield return new WaitForSeconds(_angleChange);
         }
     }

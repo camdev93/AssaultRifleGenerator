@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MagazineModule : MonoBehaviour
 {
+   
     public void GenerateNewMagazineModule()
     {
         float y = Random.Range(0.75f, 1.0f);

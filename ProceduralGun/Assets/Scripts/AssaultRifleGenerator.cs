@@ -6,6 +6,8 @@ public class AssaultRifleGenerator : MonoBehaviour
 {
     public static GameObject gunPart;
 
+    /* These variables must be made to initialise via the
+     resources folder and not public access via the inspector.*/
     public List<GameObject> upperRecieverParts;
     public List<GameObject> lowerRecieverParts;
     public List<GameObject> barrelParts;
@@ -13,10 +15,8 @@ public class AssaultRifleGenerator : MonoBehaviour
     public List<GameObject> magazineParts;
     public List<GameObject> scopeParts;
 
-    public float scale = 20f;
-
     //___________________________________________________________
-    // DEMO PURPOSES ONLY
+    // PLAY MODE DEMO PURPOSES ONLY
     public float _time = 1f;
     private void Start()
     {

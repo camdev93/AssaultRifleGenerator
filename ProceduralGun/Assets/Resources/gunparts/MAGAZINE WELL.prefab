@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bolt: {fileID: 6059463272225845586, guid: ba04a27c8f87e9e4193e0ab649c3568e, type: 3}
-  numberOfBolts: 7
+  numberOfBolts: 4
 --- !u!1 &7651392298404172890
 GameObject:
   m_ObjectHideFlags: 0

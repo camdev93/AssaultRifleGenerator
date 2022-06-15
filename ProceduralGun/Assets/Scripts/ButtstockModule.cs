@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtstockModule : MonoBehaviour
 {
     public Transform butt, stockPipe, cheekRest, rigPart, buttPart1, buttPart2;
+  
     public void GenerateNewButtstock()
     {
         float stockRigY = Random.Range(0.04f,0.065f);
