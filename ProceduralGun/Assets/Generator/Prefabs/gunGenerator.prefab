@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5616691119404597426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5616691119404599116}
+  - component: {fileID: 5616691119404599117}
+  m_Layer: 0
+  m_Name: gunGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5616691119404599116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616691119404597426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5616691119404599117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616691119404597426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf47c27272add64c81c3df026c67ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperRecieverParts:
+  - {fileID: 6002513985712812214, guid: 50c44222111539c4c937821bb346582d, type: 3}
+  - {fileID: 6002513985712812214, guid: 33aada8321f559c4093c67f1eb8fb57a, type: 3}
+  lowerRecieverParts:
+  - {fileID: 9165840287866450458, guid: c47098cd65958774b948acb875e9c715, type: 3}
+  - {fileID: 9165840287866450458, guid: 19327f5a48a56c24e8efaa6a28335cf6, type: 3}
+  barrelParts:
+  - {fileID: 3960407122165556525, guid: f3cb80813bba3da44ad96ae97713b416, type: 3}
+  - {fileID: 7106874241786982468, guid: 5f6b9452591f8254aa0f109760f3bad4, type: 3}
+  buttstockParts:
+  - {fileID: 8246792953389803139, guid: 2445be47500f619479c7ec9f49cc951c, type: 3}
+  magazineParts:
+  - {fileID: 4449653204099079841, guid: 011a28c6dbf9a0245bbeed19d0599f5c, type: 3}
+  - {fileID: 8853530812767111405, guid: 3333f71dbebac004a990c7d11ff121c4, type: 3}
+  - {fileID: 4449653204099079841, guid: ae86b6cb5630f0e4c9ee4575f7faf921, type: 3}
+  scopeParts:
+  - {fileID: 1389368218951912668, guid: 7e31671c2a726514d9d4dbb18877909f, type: 3}
+  - {fileID: 1389368218951912668, guid: aa84d05e09c0ae3449449b4e8e084a8c, type: 3}
+  - {fileID: 3984239504934502813, guid: 73d91ca0293cb4c4980de48a71857a89, type: 3}
+  _time: 0.17

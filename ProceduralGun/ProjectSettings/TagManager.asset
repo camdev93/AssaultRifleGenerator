@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ion site
   - ion site socket
+  - GunRig
+  - gun
+  - GunBox
   layers:
   - Default
   - TransparentFX
