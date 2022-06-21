@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GameObject generator;
-    bool canSwap = false, canLoad = false;
+    bool canSwap = true, canLoad = false;
 
     private void Update()
     {
@@ -16,16 +16,17 @@ public class GunController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.C))
                 {
                     LoadWeapon();
-                    canLoad = false;
                 }
             }
             else
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    canSwap = true;
-                    canLoad = false;
-                    StartCoroutine(CycleWeapons());
+                    if (canSwap)
+                    {
+                        StartCoroutine(CycleWeapons());
+                        canLoad = false;
+                    }
                 }
             }
         }
@@ -61,12 +62,15 @@ public class GunController : MonoBehaviour
             "Assault Rifle";
         weapon.transform.position = 
             transform.position;
+
+        canSwap = true;
     }
 
     IEnumerator CycleWeapons(float time = 0.15f)
     {
         bool jackPot = false;
         int index = Random.Range(15, 30);
+        canSwap = false;
 
         while (!jackPot)
         {
