@@ -2,28 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
+    Canvas ui;
+    Slider healthBar;
     Animator anim;
     NavMeshAgent agent;
     Vector3 player;
+
+    [HideInInspector]
+    public float health, maxHealth_1 = 100f, maxHealth_2 = 300f;
+
     void Start()
     {
+        ui = GetComponentInChildren<Canvas>();
         anim = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        healthBar = GetComponentInChildren<Slider>();
+
+        if (this.gameObject.transform.tag == "Zombie1")
+        {
+            health = maxHealth_1;
+            healthBar.maxValue = maxHealth_1;
+        }
+        else if(this.gameObject.transform.tag == "Zombie2")
+        {
+            health = maxHealth_2;
+            healthBar.maxValue = maxHealth_2;
+        }
     }
 
     void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform.position;
+        healthBar.value = health;
+        ui.transform.LookAt(player);
 
         if (Vector3.Distance(agent.transform.position, player) > agent.stoppingDistance)
         {
-            if (gameObject.name == "Zombie_1")
+            if (this.gameObject.transform.tag == "Zombie1")
             {
                 Walk();
-            }else if(gameObject.name == "Zombie_2")
+            }else if(this.gameObject.transform.tag == "Zombie2")
             {
                 Run();
             }
@@ -31,6 +53,11 @@ public class Zombie : MonoBehaviour
         else
         {
             Attack();
+        }
+
+        if (health <= 0f)
+        {
+            Die();
         }
     }
 
@@ -50,5 +77,12 @@ public class Zombie : MonoBehaviour
     {
         anim.SetInteger("EnemyState", 2);
         transform.LookAt(player);
+    }
+
+    void Die()
+    {
+        Destroy(this.gameObject, 10f);
+        anim.SetBool("isDead", true);
+        agent.speed = 0;
     }
 }

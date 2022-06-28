@@ -9,6 +9,13 @@ TagManager:
   - GunRig
   - gun
   - GunBox
+  - FirePoint
+  - zombie
+  - AmmoCount
+  - Zombie1
+  - Zombie2
+  - HUD
+  - ReloadIndicator
   layers:
   - Default
   - TransparentFX

@@ -8,8 +8,6 @@ public class ScopeModule : MonoBehaviour
 
     public void GenerateNewScopeModule()
     {
-        
-
         if (this.transform.tag == "ion site")
         {
             int rand = Random.Range(0, 2);
@@ -27,6 +25,7 @@ public class ScopeModule : MonoBehaviour
 
             GameObject ionSiteSocket = GameObject.FindGameObjectWithTag("ion site socket");
             Instantiate(ionSiteFront, ionSiteSocket.transform.position, ionSiteSocket.transform.rotation, this.transform);
+            ionSiteSocket.transform.tag = "Untagged";
         }
         else
         {
