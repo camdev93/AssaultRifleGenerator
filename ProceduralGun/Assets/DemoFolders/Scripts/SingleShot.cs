@@ -54,7 +54,7 @@ public class SingleShot : MonoBehaviour
 
     void Reload()
     {
-        reloadMeter.value += 0.8f*Time.deltaTime;
+        reloadMeter.value += 1f*Time.deltaTime;
 
         if (reloadMeter.value == reloadMeter.maxValue)
         {

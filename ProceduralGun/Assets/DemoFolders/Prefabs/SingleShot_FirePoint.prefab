@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fb9e1106a93cf42afc2a7ccfd39409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6750051664364467282, guid: a23275363a7c1744096cbde6a1b0f1a9, type: 3}
+  bullet: {fileID: 6750051664364467282, guid: 7e3f0e1c26be87140a0acd3918799e28, type: 3}
   ammo: 0
   maxAmmo: 20
   damage: 150

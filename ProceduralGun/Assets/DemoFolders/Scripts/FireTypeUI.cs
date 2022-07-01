@@ -8,5 +8,6 @@ public class FireTypeUI : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.up * speed * Time.deltaTime;
+        Destroy(this.gameObject, 5f);
     }
 }

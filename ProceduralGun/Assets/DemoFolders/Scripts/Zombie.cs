@@ -10,7 +10,6 @@ public class Zombie : MonoBehaviour
     Slider healthBar;
     Animator anim;
     NavMeshAgent agent;
-    Vector3 player;
 
     [HideInInspector]
     public float health, maxHealth_1 = 100f, maxHealth_2 = 300f;
@@ -36,7 +35,7 @@ public class Zombie : MonoBehaviour
 
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector3 player = GameObject.FindGameObjectWithTag("Player").transform.position;
         healthBar.value = health;
         ui.transform.LookAt(player);
 
@@ -44,15 +43,15 @@ public class Zombie : MonoBehaviour
         {
             if (this.gameObject.transform.tag == "Zombie1")
             {
-                Walk();
+                Walk(player);
             }else if(this.gameObject.transform.tag == "Zombie2")
             {
-                Run();
+                Run(player);
             }
         }
         else
         {
-            Attack();
+            Attack(player);
         }
 
         if (health <= 0f)
@@ -61,19 +60,19 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    void Walk()
+    void Walk(Vector3 player)
     {
         anim.SetInteger("EnemyState", 0);
         agent.SetDestination(player);
     }
 
-    void Run()
+    void Run(Vector3 player)
     {
         anim.SetInteger("EnemyState", 1);
         agent.SetDestination(player);
     }
 
-    void Attack()
+    void Attack(Vector3 player)
     {
         anim.SetInteger("EnemyState", 2);
         transform.LookAt(player);
@@ -81,8 +80,9 @@ public class Zombie : MonoBehaviour
 
     void Die()
     {
-        Destroy(this.gameObject, 10f);
+        Destroy(this.gameObject, 15f);
         anim.SetBool("isDead", true);
         agent.speed = 0;
+        EnemyManager.zombiesAlive.Remove(this.gameObject);
     }
 }

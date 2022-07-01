@@ -16,6 +16,8 @@ TagManager:
   - Zombie2
   - HUD
   - ReloadIndicator
+  - BoltAction
+  - FullAuto
   layers:
   - Default
   - TransparentFX

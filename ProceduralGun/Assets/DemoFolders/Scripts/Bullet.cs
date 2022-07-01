@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     public float thrust = 50f;
 
+    [HideInInspector]
+    float autoDamage = 20f, boltDamage = 150f;
+
     void Update()
     {
         transform.position += transform.TransformDirection(Vector3.forward) * thrust * Time.deltaTime;
@@ -16,16 +19,16 @@ public class Bullet : MonoBehaviour
     {
         if (collision.transform.tag == "Zombie1"|| collision.transform.tag == "Zombie2")
         {
-            if (GameObject.FindGameObjectWithTag("Player").TryGetComponent<FullyAutomatic>(out FullyAutomatic component)) 
+            if (this.transform.tag=="FullAuto") 
             {
-                collision.gameObject.GetComponent<Zombie>().health -= component.damage;
+                collision.gameObject.GetComponent<Zombie>().health -= autoDamage;
                 Destroy(this.gameObject);
                 Debug.Log("auto");
             }
 
-            if (GameObject.FindGameObjectWithTag("Player").TryGetComponent<SingleShot>(out SingleShot comp))
+            if (this.transform.tag == "BoltAction")
             {
-                collision.gameObject.GetComponent<Zombie>().health -= comp.damage;
+                collision.gameObject.GetComponent<Zombie>().health -= boltDamage;
                 Destroy(this.gameObject);
                 Debug.Log("single");
             }
