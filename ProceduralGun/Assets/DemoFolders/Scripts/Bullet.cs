@@ -22,15 +22,25 @@ public class Bullet : MonoBehaviour
             if (this.transform.tag=="FullAuto") 
             {
                 collision.gameObject.GetComponent<Zombie>().health -= autoDamage;
-                Destroy(this.gameObject);
-                Debug.Log("auto");
+                Destroy(this.gameObject); 
+                
+                if (collision.gameObject.GetComponent<Zombie>().health <= 1)
+                {
+                    collision.gameObject.GetComponent<Zombie>().manager.zombiesAlive--;
+                    Destroy(collision.collider);
+                }
             }
 
             if (this.transform.tag == "BoltAction")
             {
                 collision.gameObject.GetComponent<Zombie>().health -= boltDamage;
                 Destroy(this.gameObject);
-                Debug.Log("single");
+
+                if (collision.gameObject.GetComponent<Zombie>().health <= 1)
+                {
+                    collision.gameObject.GetComponent<Zombie>().manager.zombiesAlive--;
+                    Destroy(collision.collider);
+                }
             }
         }
     }

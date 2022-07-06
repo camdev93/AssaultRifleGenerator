@@ -10,12 +10,17 @@ public class Zombie : MonoBehaviour
     Slider healthBar;
     Animator anim;
     NavMeshAgent agent;
+    [HideInInspector]
+    public EnemyManager manager;
 
     [HideInInspector]
     public float health, maxHealth_1 = 100f, maxHealth_2 = 300f;
+    public Hitbox hitBox;
 
     void Start()
     {
+        hitBox = GetComponentInChildren<Hitbox>();
+        manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         ui = GetComponentInChildren<Canvas>();
         anim = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -48,10 +53,13 @@ public class Zombie : MonoBehaviour
             {
                 Run(player);
             }
+
+            hitBox.gameObject.SetActive(false);
         }
         else
         {
             Attack(player);
+            hitBox.gameObject.SetActive(true);
         }
 
         if (health <= 0f)
@@ -80,9 +88,8 @@ public class Zombie : MonoBehaviour
 
     void Die()
     {
-        Destroy(this.gameObject, 15f);
         anim.SetBool("isDead", true);
         agent.speed = 0;
-        EnemyManager.zombiesAlive.Remove(this.gameObject);
+        Destroy(this.gameObject, 7f);
     }
 }

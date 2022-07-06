@@ -7,15 +7,20 @@ public class SingleShot : MonoBehaviour
 {
     Slider reloadMeter;
     private Text ammoCount;
-    public GameObject bullet;
+    public GameObject bullet, gunRig;
     bool canShoot, isReloading;
 
     [HideInInspector]
     public int ammo, maxAmmo = 20;
     public int damage = 150;
+    [HideInInspector]
+    public float reloadTime = 2f;
+    int playerHealth;
 
     void Start()
     {
+        playerHealth = GameObject.FindObjectOfType<PlayerMovement>().health;
+        gunRig = GameObject.Find("GunRig");
         reloadMeter = GameObject.FindGameObjectWithTag("ReloadIndicator").GetComponent<Slider>();
         reloadMeter.maxValue = 1.6f;
         reloadMeter.gameObject.SetActive(false);
@@ -27,34 +32,49 @@ public class SingleShot : MonoBehaviour
 
     void Update()
     {
-        if (ammo >= 1)
+        if (playerHealth >= 1)
         {
-            ammoCount.text = "Ammunition: " + ammo.ToString();
-
-            if (canShoot)
+            if (ammo >= 1)
             {
-                if (Input.GetMouseButtonDown(0))
+                ammoCount.text = "Ammunition: " + ammo.ToString();
+                ammoCount.color = Color.yellow;
+
+                if (canShoot)
                 {
-                    StartCoroutine(Shoot());
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        StartCoroutine(Shoot());
+                    }
                 }
+            }
+            else
+            {
+                if (Vector3.Distance(gunRig.GetComponent<GunController>().transform.position, gunRig.GetComponent<GunController>().generator.transform.position) >= 3.5f)
+                {
+                    reloadMeter.gameObject.SetActive(false);
+                    gunRig.GetComponent<GunController>().instructions.text = "NO AMMO.. Go generate another weapon!!";
+                    gunRig.GetComponent<GunController>().infoTabAnim.SetBool("showInfo", true);
+                    ammoCount.text = "NO AMMO";
+                    ammoCount.color = Color.red;
+                    reloadMeter.gameObject.SetActive(true);
+                    reloadMeter.value = 0;
+                }
+            }
+
+            if (isReloading)
+            {
+                Reload();
             }
         }
         else
         {
-            ammoCount.text = "NO AMMO";
-            reloadMeter.gameObject.SetActive(true);
-            reloadMeter.value = 0;
-        }
-
-        if (isReloading)
-        {
-            Reload();
+            gunRig.SetActive(false);
         }
     }
 
     void Reload()
     {
-        reloadMeter.value += 1f*Time.deltaTime;
+        reloadMeter.value += reloadTime * Time.deltaTime;
 
         if (reloadMeter.value == reloadMeter.maxValue)
         {

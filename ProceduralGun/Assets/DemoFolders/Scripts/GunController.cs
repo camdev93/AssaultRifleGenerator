@@ -5,21 +5,33 @@ using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
-
-    public Animator gunBoxAnim;
+    public Animator gunBoxAnim, infoTabAnim;
     public GameObject generator;
-    public GameObject singleShot_Module, fullyAutomatic_Module;
-    bool canLoad = false;
-    public Text fullAutoUI, boltActionUI;
+    public GameObject singleShot_Module, fullyAutomatic_Module, infoUI;
+    bool canLoad = false, tutorial;
+    public Text fullAutoUI, boltActionUI, instructions;
+
+    private void Start()
+    {
+        infoUI = GameObject.Find("InfoTab");
+        instructions = infoUI.GetComponentInChildren<Text>();
+        infoTabAnim = infoUI.GetComponent<Animator>();
+        tutorial = true;
+    }
 
     private void Update()
     {
         if (Vector3.Distance(transform.position, generator.transform.position) <= 3.5f)
         {
+            tutorial = false;
             gunBoxAnim.SetBool("canOpen", true);
+            infoTabAnim.SetBool("showInfo", true);
 
             if (!canLoad)
             {
+                instructions.text = "Press 'C' to generate a random weapon!";
+                instructions.color = Color.white;
+
                 if (Input.GetKeyDown(KeyCode.C))
                 {
                     StartCoroutine(CycleWeapons());
@@ -27,6 +39,9 @@ public class GunController : MonoBehaviour
             }
             else
             {
+                instructions.text = "Press 'C' to LOAD WEAPON!";
+                instructions.color = Color.yellow;
+
                 if (Input.GetKeyDown(KeyCode.C))
                 {
                     LoadWeapon();
@@ -35,7 +50,16 @@ public class GunController : MonoBehaviour
         }
         else
         {
-            gunBoxAnim.SetBool("canOpen", false);
+            if (tutorial)
+            {
+                infoTabAnim.SetBool("showInfo", true);
+                instructions.text = "1. Find the Gun Generator in the middle of the map.\n" + "2. Generate and LOAD and new weapon.\n" + "3. SHOOT ZOMBIES!!";
+            }
+            else
+            {
+                gunBoxAnim.SetBool("canOpen", false);
+                infoTabAnim.SetBool("showInfo", false);
+            }
         }
     }
 

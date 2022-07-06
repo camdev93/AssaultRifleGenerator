@@ -6,36 +6,40 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject zombie1, zombie2;
-    public static List<GameObject> zombiesAlive;
-    bool canSpawn;
+    public int zombiesAlive;
+    bool newWave = false;
     int currentWave, maxZombies;
-    public Text currentWaveText;//, zombiesInScene;
+    public Text currentWaveText, zombiesInScene;
 
     void Start()
     {
-        canSpawn = true;
-        currentWave = 1;
-        maxZombies = 30;
+        currentWave = 0;
+        maxZombies = 5;
+        zombiesAlive = 0;
         currentWaveText = GameObject.Find("WaveCount").GetComponent<Text>();
-        //zombiesInScene = GameObject.Find("ZombieCount").GetComponent<Text>();
+        zombiesInScene = GameObject.Find("ZombieCount").GetComponent<Text>();
+
+        StartCoroutine(SpawnEnemy());
     }
 
     void Update()
     {
-        //int enemies = 
         currentWaveText.text = "WAVE: " + currentWave.ToString();
-        //zombiesInScene.text = "Zombies: " + zombiesAlive.Count.ToString();
+        zombiesInScene.text = "Zombies: " + zombiesAlive.ToString();
 
-        if (canSpawn)
+        if (newWave)
         {
-            StartCoroutine(SpawnEnemy());
+            if (zombiesAlive <= 0)
+            {
+                StartCoroutine(SpawnEnemy());
+
+                currentWave++;
+            }
         }
     }
 
     IEnumerator SpawnEnemy(float time = 1f)
     {
-        canSpawn = false;
-
         for (int i = 0; i < maxZombies; i++)
         {
             int zombieIndex = Random.Range(0, 2);
@@ -45,19 +49,17 @@ public class EnemyManager : MonoBehaviour
             if (zombieIndex == 0)
             {
                 GameObject zombie = Instantiate(zombie1, spawnPoint.position, transform.rotation);
-                //zombiesAlive.Add(zombie);
+                zombiesAlive++;
             }
             else
             {
                 GameObject zombie = Instantiate(zombie2, spawnPoint.position, transform.rotation);
-                //zombiesAlive.Add(zombie);
+                zombiesAlive++;
             }
             yield return new WaitForSeconds(time);
         }
-
-        maxZombies += 10;
-        currentWave++;
-
-        canSpawn = true;
+        yield return new WaitForEndOfFrame();
+        maxZombies += 3;
+        newWave = true;
     }
 }

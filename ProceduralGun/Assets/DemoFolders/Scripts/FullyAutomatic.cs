@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class FullyAutomatic : MonoBehaviour
 {
     private Text ammoCount;
-    public GameObject bullet;
+    public GameObject bullet, gunRig;
     bool canShoot;
 
     [HideInInspector]
-    public int ammo, maxAmmo = 150;
+    public int ammo, maxAmmo = 300;
     public int damage = 20;
+    int playerHealth;
 
     void Start()
     {
+        playerHealth = GameObject.FindObjectOfType<PlayerMovement>().health;
+        gunRig = GameObject.Find("GunRig");
         ammoCount = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<Text>();
         ammo = 150;
         canShoot = true;
@@ -22,26 +25,35 @@ public class FullyAutomatic : MonoBehaviour
 
     void Update()
     {
-        if (ammo >= 1)
+        if (playerHealth >= 1)
         {
-            ammoCount.text = "Ammunition: " + ammo.ToString();
-            ammoCount.color = Color.yellow;
+            if (ammo >= 1)
+            {
+                ammoCount.text = "Ammunition: " + ammo.ToString();
+                ammoCount.color = Color.yellow;
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                StartCoroutine(Shoot());
+                if (Input.GetMouseButtonDown(0))
+                {
+                    StartCoroutine(Shoot());
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    canShoot = false;
+                    Debug.Log("Up");
+                }
             }
-            else if (Input.GetMouseButtonUp(0))
+            else
             {
+                gunRig.GetComponent<GunController>().instructions.text = "NO AMMO.. Go generate another weapon!!";
+                gunRig.GetComponent<GunController>().infoTabAnim.SetBool("showInfo", true);
+                ammoCount.text = "NO AMMO";
+                ammoCount.color = Color.red;
                 canShoot = false;
-                Debug.Log("Up");
             }
         }
         else
         {
-            ammoCount.text = "NO AMMO";
-            ammoCount.color = Color.red;
-            canShoot = false;
+            gunRig.SetActive(false);
         }
     }
 
