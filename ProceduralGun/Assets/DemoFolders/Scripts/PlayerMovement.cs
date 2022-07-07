@@ -56,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             healthBar.value = health;
-            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {

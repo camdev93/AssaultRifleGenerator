@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 7526879330763884493}
   - component: {fileID: 7526879330763884483}
   - component: {fileID: 7920758274790894937}
+  - component: {fileID: 3404336962230849435}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -235,6 +236,9 @@ MonoBehaviour:
   mouseSensitivity: 200
   gravity: 1
   jumpForce: 0.15
+  health: 0
+  maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!114 &7920758274790894937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +251,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0979bb6c74d0a334c893a6ebe173e001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadMenu: {fileID: 0}
+--- !u!114 &3404336962230849435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526879330763884494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d206ad41403934fbdd100e5947a7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!1 &7526879331197367112
 GameObject:
   m_ObjectHideFlags: 0
