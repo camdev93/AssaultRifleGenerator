@@ -13,9 +13,11 @@ public class FullyAutomatic : MonoBehaviour
     public int ammo, maxAmmo = 300;
     public int damage = 20;
     int playerHealth;
+    GunController gun;
 
     void Start()
     {
+        gun = GetComponentInParent<GunController>();
         playerHealth = GameObject.FindObjectOfType<PlayerMovement>().health;
         gunRig = GameObject.Find("GunRig");
         ammoCount = GameObject.FindGameObjectWithTag("AmmoCount").GetComponent<Text>();
@@ -63,6 +65,7 @@ public class FullyAutomatic : MonoBehaviour
 
         do
         {
+            gun.gunAnim.Play("GunShoot");
             GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
             ammo--;
             yield return new WaitForSeconds(_time);

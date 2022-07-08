@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
-    public Animator gunBoxAnim, infoTabAnim;
+    public Animator gunBoxAnim, infoTabAnim, gunAnim;
     public GameObject generator;
     public GameObject singleShot_Module, fullyAutomatic_Module, infoUI;
     bool canLoad = false, tutorial;
@@ -16,6 +16,7 @@ public class GunController : MonoBehaviour
         infoUI = GameObject.Find("InfoTab");
         instructions = infoUI.GetComponentInChildren<Text>();
         infoTabAnim = infoUI.GetComponent<Animator>();
+        gunAnim = GetComponent<Animator>();
         tutorial = true;
     }
 

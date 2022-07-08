@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunBoxAnim: {fileID: 0}
   infoTabAnim: {fileID: 0}
+  gunAnim: {fileID: 0}
   generator: {fileID: 0}
   singleShot_Module: {fileID: 1781049090844955070, guid: 6c0821eb6d2c7194a94eb8b4af73b2a2, type: 3}
   fullyAutomatic_Module: {fileID: 7819933713616127375, guid: 74bd6dba7acfbab4188e75e7936e1b2a, type: 3}
@@ -82,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7526879330328672638}
   - component: {fileID: 7526879330328672639}
+  - component: {fileID: 8115794423496826222}
   - component: {fileID: 7526879330328672632}
   - component: {fileID: 7526879330328672637}
   m_Layer: 0
@@ -149,6 +151,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &8115794423496826222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526879330328672633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7ff168c785cfd4995dfaae353d22b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!81 &7526879330328672632
 AudioListener:
   m_ObjectHideFlags: 0
@@ -232,8 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef763f9db8c89345bbd6bea8140f72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  mouseSensitivity: 200
+  speed: 3
+  mouseSensitivity: 140
   gravity: 1
   jumpForce: 0.15
   health: 0

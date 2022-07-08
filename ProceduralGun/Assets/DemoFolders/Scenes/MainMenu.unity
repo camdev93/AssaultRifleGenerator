@@ -488,7 +488,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2988
+  m_Name: pb_Mesh-270084
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -784,7 +784,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3006
+  m_Name: pb_Mesh-270102
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1460,6 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88b27d6f8394054882f1f83daeb8f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunBox: {fileID: 1758299154}
   speed: 10
 --- !u!114 &555863482
 MonoBehaviour:
@@ -2795,6 +2796,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701537442}
   m_CullTransparentMesh: 0
+--- !u!1 &1758299154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6460588829617950951, guid: ab8dbca61f555604685732c25543912f, type: 3}
+  m_PrefabInstance: {fileID: 629469802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1831127606
 Mesh:
   m_ObjectHideFlags: 0
@@ -3294,12 +3300,12 @@ GameObject:
   - component: {fileID: 1910671392}
   - component: {fileID: 1910671391}
   m_Layer: 5
-  m_Name: QUIT
+  m_Name: QUIT(Remove for WebGL)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1910671390
 RectTransform:
   m_ObjectHideFlags: 0

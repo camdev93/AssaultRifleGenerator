@@ -6,10 +6,13 @@ public class cameraOrbit : MonoBehaviour
 {
     GameObject gunBox;
     public float speed = 10f;
-    void Start()
+
+    private void Start()
     {
+        Time.timeScale = 1f;
         gunBox = GameObject.Find("GunBox");
     }
+
     void Update()
     {
         float _speed = speed * Time.deltaTime;

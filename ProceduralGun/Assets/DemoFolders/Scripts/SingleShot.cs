@@ -16,9 +16,11 @@ public class SingleShot : MonoBehaviour
     [HideInInspector]
     public float reloadTime = 2f;
     int playerHealth;
+    GunController gun;
 
     void Start()
     {
+        gun = GetComponentInParent<GunController>();
         playerHealth = GameObject.FindObjectOfType<PlayerMovement>().health;
         gunRig = GameObject.Find("GunRig");
         reloadMeter = GameObject.FindGameObjectWithTag("ReloadIndicator").GetComponent<Slider>();
@@ -87,6 +89,7 @@ public class SingleShot : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        gun.gunAnim.Play("GunShoot");
         reloadMeter.gameObject.SetActive(true);
         reloadMeter.value = 0;
         canShoot = false;
