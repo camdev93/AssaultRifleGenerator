@@ -8,16 +8,18 @@ public class PlayerMovement : MonoBehaviour
     Camera cam;
     CharacterController controller;
     public float speed, mouseSensitivity, gravity, jumpForce;
-    public int health, maxHealth = 100;
+    [HideInInspector]
+    public int health;
+    public int maxHealth = 100;
     public Slider healthBar;
     Vector3 playerDir;
-    GameObject hurtUI;
+    public GameObject hurtUI;
+    GameObject hud;
     GunController gun;
 
     void Start()
     {
-        hurtUI = GameObject.Find("HurtUI");
-        hurtUI.SetActive(false);
+        hud = GameObject.Find("HUD");
         health = maxHealth;
         healthBar.maxValue = maxHealth;
 
@@ -55,7 +57,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (health >= 1)
         {
-            //CameraClamp();
+            if (Time.timeScale == 1)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
 
             float hor = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             float ver = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -94,10 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator PlayerHurt()
     {
-        hurtUI.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        hurtUI.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        hurtUI.SetActive(false);
+        GameObject ui = Instantiate(hurtUI, hud.transform);
+        ui.transform.SetAsFirstSibling();
+        yield return new WaitForEndOfFrame();
     }
 }

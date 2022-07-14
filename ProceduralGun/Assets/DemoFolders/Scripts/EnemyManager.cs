@@ -13,8 +13,8 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        currentWave = 0;
-        maxZombies = 5;
+        currentWave = 1;
+        maxZombies = 3;
         zombiesAlive = 0;
         currentWaveText = GameObject.Find("WaveCount").GetComponent<Text>();
         zombiesInScene = GameObject.Find("ZombieCount").GetComponent<Text>();
@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         currentWaveText.text = "WAVE: " + currentWave.ToString();
-        zombiesInScene.text = "Zombies: " + zombiesAlive.ToString();
+        zombiesInScene.text = "Zombies alive: " + zombiesAlive.ToString();
 
         if (newWave)
         {
@@ -38,25 +38,41 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnEnemy(float time = 1f)
+    IEnumerator SpawnEnemy(float time = 2.5f)
     {
-        for (int i = 0; i < maxZombies; i++)
+        if (currentWave < 2)
         {
-            int zombieIndex = Random.Range(0, 2);
-            int index = Random.Range(0, (transform.childCount-1));
-            Transform spawnPoint = transform.GetChild(index);
-
-            if (zombieIndex == 0)
+            for (int i = 0; i < maxZombies; i++)
             {
+                int index = Random.Range(0, (transform.childCount - 1));
+                Transform spawnPoint = transform.GetChild(index);
+
                 GameObject zombie = Instantiate(zombie1, spawnPoint.position, transform.rotation);
                 zombiesAlive++;
+
+                yield return new WaitForSeconds(time);
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < maxZombies; i++)
             {
-                GameObject zombie = Instantiate(zombie2, spawnPoint.position, transform.rotation);
-                zombiesAlive++;
+                int zombieIndex = Random.Range(0, 2);
+                int index = Random.Range(0, (transform.childCount - 1));
+                Transform spawnPoint = transform.GetChild(index);
+
+                if (zombieIndex == 0)
+                {
+                    GameObject zombie = Instantiate(zombie1, spawnPoint.position, transform.rotation);
+                    zombiesAlive++;
+                }
+                else
+                {
+                    GameObject zombie = Instantiate(zombie2, spawnPoint.position, transform.rotation);
+                    zombiesAlive++;
+                }
+                yield return new WaitForSeconds(time);
             }
-            yield return new WaitForSeconds(time);
         }
         yield return new WaitForEndOfFrame();
         maxZombies += 3;

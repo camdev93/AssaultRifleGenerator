@@ -14,6 +14,4 @@ public class Hitbox : MonoBehaviour
             Debug.Log("HIT");
         }
     }
-
-   
 }
