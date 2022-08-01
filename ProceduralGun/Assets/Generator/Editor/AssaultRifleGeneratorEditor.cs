@@ -19,19 +19,3 @@ public class AssaultRifleGeneratorEditor : Editor
     }
     
 }
-
-/*[CustomEditor(typeof(ButtstockModule))]
-public class ButtstockModuleEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        ButtstockModule module = (ButtstockModule)target;
-
-        if (GUILayout.Button("Generate New Buttstock"))
-        {
-            module.GenerateNewButtstock();
-        }
-    }
-}*/
