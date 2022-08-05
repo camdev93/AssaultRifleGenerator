@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cam : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Cam : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CameraAngle(angleChange));
+        StartCoroutine(NewRifle());
     }
 
     void Update()
@@ -45,6 +47,11 @@ public class Cam : MonoBehaviour
             minimum = temp;
             t = 0.0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     IEnumerator CameraAngle(float _angleChange)
@@ -53,6 +60,15 @@ public class Cam : MonoBehaviour
         {
             angleIndex = Random.Range(0, 2);
             yield return new WaitForSeconds(_angleChange);
+        }
+    }
+
+    IEnumerator NewRifle(float time = 0.35f)
+    {
+        while (true)
+        {
+            gun.gameObject.GetComponent<AssaultRifleGenerator>().GenerateAssaultRifle();
+            yield return new WaitForSeconds(time);
         }
     }
 }
